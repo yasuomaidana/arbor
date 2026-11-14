@@ -1,0 +1,2 @@
+# Exceptions to scripts/check-db-access.sh (SQL only through Diesel).
+# Format: <path prefix> <reason>. Every entry requires a reason; the list only shrinks.

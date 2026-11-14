@@ -1,0 +1,4 @@
+# Expanded test-thread stack size for deep tree and recursive-CTE tests in unoptimized builds.
+# Applies to `cargo test` / `cargo run`; CI inherits it from this file.
+[env]
+RUST_MIN_STACK = "16777216"

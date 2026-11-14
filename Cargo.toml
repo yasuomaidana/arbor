@@ -1,0 +1,24 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/arbor-tree",
+    "crates/arbor-diesel",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+authors = ["Yasuo I. Maidana P."]
+repository = "https://github.com/yasuomaidana/arbor"
+
+[workspace.dependencies]
+arbor-tree = { path = "crates/arbor-tree", version = "0.1.0" }
+serde = { version = "1.0", features = ["derive"] }
+thiserror = "2.0"
+ts-rs = "12.0"
+rstest = "0.28"
+diesel = { version = "2.3", default-features = false }
+diesel-cte-ext = { version = "0.3", default-features = false }
+# Fork with SQLite insert semantics, chrono and `cte-ext` (upstream PRs yackey-labs/diesel-libsql#5, #6).
+diesel-libsql = { git = "https://github.com/yasuomaidana/diesel-libsql", branch = "develop", default-features = false }

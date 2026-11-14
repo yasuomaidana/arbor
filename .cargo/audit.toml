@@ -1,0 +1,21 @@
+# Advisories no change in this repository can fix: the vulnerable versions are required by the
+# latest release of an upstream crate. Any other advisory still fails `cargo audit`; drop an entry
+# as soon as a dependency update removes its crate from Cargo.lock; scripts/check-audit-ignores.sh
+# (workflow audit-ignores.yml) fails when one no longer applies.
+
+[advisories]
+ignore = [
+    # h2 0.3, rustls 0.22, rustls-webpki 0.102: libsql 0.9 via diesel-libsql 0.1.4.
+    "RUSTSEC-2026-0258",
+    "RUSTSEC-2026-0346",
+    "RUSTSEC-2026-0349",
+    "RUSTSEC-2026-0049",
+    "RUSTSEC-2026-0098",
+    "RUSTSEC-2026-0099",
+    "RUSTSEC-2026-0104",
+    "RUSTSEC-2026-0382",
+    # libsqlite3-sys 0.37 (bundled C SQLite, CVE-2026-119375, fixed in >= 0.39.0): diesel 2.3.14, the
+    # latest release, requires libsqlite3-sys >=0.17.2, <0.39.0, so no fixed version can be resolved.
+    # Remove it when a diesel release accepts 0.39; review by 2026-12-10.
+    "RUSTSEC-2026-0459",
+]

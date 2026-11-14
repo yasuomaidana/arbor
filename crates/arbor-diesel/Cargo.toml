@@ -1,0 +1,24 @@
+[package]
+name = "arbor-diesel"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+description = "Typed recursive-CTE descendant and ancestor traversals for Diesel (SQLite, PostgreSQL, libSQL) built on arbor-tree and diesel-cte-ext."
+
+[dependencies]
+arbor-tree = { workspace = true }
+diesel = { workspace = true }
+diesel-cte-ext = { workspace = true }
+# Fork with SQLite insert semantics, chrono and `cte-ext` (upstream PRs yackey-labs/diesel-libsql#5, #6).
+diesel-libsql = { workspace = true, features = ["cte-ext"], optional = true }
+
+[features]
+default = []
+sqlite = ["diesel/sqlite", "diesel-cte-ext/sqlite"]
+postgres = ["diesel/postgres", "diesel-cte-ext/postgres"]
+libsql = ["dep:diesel-libsql"]
+
+[dev-dependencies]
+rstest = { workspace = true }
